@@ -1,4 +1,4 @@
-require('dotenv').config()
+require("dotenv").config();
 let express = require("express");
 let app = express();
 const absolutePath = __dirname + "/views/";
@@ -11,12 +11,13 @@ app.get("/", function (req, res) {
 });
 
 app.get("/json", (req, res) => {
-
+  console.log(process.env.MESSAGE_STYLE);
   if (process.env.MESSAGE_STYLE === "uppercase") {
-    res.json = "Hello json".toUpperCase();
+    response = "Hello json".toUpperCase();
   } else {
-    res.json = "Hello json";
+    response = "Hello json";
   }
+  res.json({ message: response });
 });
 
 module.exports = app;
